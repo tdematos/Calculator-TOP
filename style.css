@@ -1,5 +1,14 @@
 .calculator-number-buttons {
   display: flex;
   flex-wrap: wrap;
-  width: 80px;
+  width: 200px;
+}
+
+button {
+  width: 60px;
+  height: 60px;
+}
+
+.zero {
+  width: 120px;
 }
