@@ -1,7 +1,43 @@
+body {
+  max-width: 800px;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+}
+
+.calc-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator-num-body {
+  display: flex;
+}
+
+.calculator-num-body {
+  margin-left: 40px;58
+}
+
+.calc-display {
+  display: flex;
+  justify-content: flex-end;
+  height: 50px;
+  width: 258px;
+  background-color: rgb(91, 91, 91);
+  margin-bottom: none;
+  padding-top: 20px;
+  border: solid black;
+}
+
 .calculator-number-buttons {
   display: flex;
   flex-wrap: wrap;
   width: 200px;
+  margin-right: none;
 }
 
 button {
@@ -11,4 +47,28 @@ button {
 
 .zero {
   width: 120px;
+}
+
+.function-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100px;
+}
+
+.function-buttons > * {
+  background-color: orange;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.calc-numbers {
+  font-size: 3rem;
+  position: relative;
+  bottom: 50px;
+  right: 10px;
+}
+
+p {
+  color: white;
 }
