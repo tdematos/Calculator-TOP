@@ -28,12 +28,36 @@ let operate = function (a, b) {
 operate(firstNum, secNum);
 //function for displaying value on calculator
 
+const zerobtn = document.querySelector(".zero");
+const onebtn = document.querySelector(".one");
+const twobtn = document.querySelector(".two");
+const threebtn = document.querySelector(".three");
+const fourbtn = document.querySelector(".four");
+const fivebtn = document.querySelector(".five");
+const sixbtn = document.querySelector(".six");
+const sevenbtn = document.querySelector(".seven");
+const eightbtn = document.querySelector(".eight");
+const ninebtn = document.querySelector(".nine");
+
+const displayScreen = document.querySelector(".calc-display");
+const pTag = document.createElement("p");
 const allBtns = document.querySelectorAll("button");
 
 allBtns.forEach(function (button) {
   button.addEventListener("click", () => {
-    console.log(button);
+    if ((button = onebtn)) {
+      pTag.textContent += "1";
+      displayScreen.appendChild(pTag);
+    }
+
+    if ((button = twobtn)) {
+      pTag.textContent += "2";
+      displayScreen.appendChild(pTag);
+      console.log(displayScreen);
+    }
   });
 });
 
 //create a variable to select all the button
+//created a command for itterating through all of the buttons
+//once a button is pressed,

@@ -27,7 +27,7 @@ h1 {
   justify-content: flex-end;
   height: 50px;
   width: 258px;
-  background-color: rgb(91, 91, 91);
+  background-color: rgb(108, 108, 108);
   margin-bottom: none;
   padding-top: 20px;
   border: solid black;
@@ -62,7 +62,7 @@ button {
   font-size: 25px;
 }
 
-.calc-numbers {
+.calc-numbers > * {
   font-size: 3rem;
   position: relative;
   bottom: 50px;
