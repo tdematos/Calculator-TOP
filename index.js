@@ -1,26 +1,28 @@
-//variables for storing numbers
+//variables and operator for storing numbers
 const firstNum = 15;
 const secNum = 2;
+const opperators = ["+", "-", "*", "/"];
 //calculation operation functions
-function add(a, b) {
+const add = (a, b) => {
   return a + b;
-}
+};
 add(firstNum, secNum);
 
-function subtract(a, b) {
+const subtract = (a, b) => {
   return a - b;
-}
+};
 subtract(firstNum, secNum);
 
-function multiply(a, b) {
+const multiply = (a, b) => {
   return a * b;
-}
+};
 multiply(firstNum, secNum);
 
-function divide(a, b) {
+const divide = (a, b) => {
   return a / b;
-}
+};
 divide(firstNum, secNum);
+
 //function to execute calculations
 let operate = function (a, b) {
   return multiply(a, b);
@@ -45,15 +47,57 @@ const allBtns = document.querySelectorAll("button");
 
 allBtns.forEach(function (button) {
   button.addEventListener("click", () => {
-    if ((button = onebtn)) {
-      pTag.textContent += "1";
+    if (button === onebtn) {
+      const one = (pTag.textContent += "1");
+      displayScreen.appendChild(pTag);
+      console.log(one);
+    }
+
+    if (button === twobtn) {
+      const two = (pTag.textContent += "2");
+      displayScreen.appendChild(pTag);
+      console.log(two);
+    }
+
+    if (button === threebtn) {
+      const three = (pTag.textContent += "3");
+      displayScreen.appendChild(pTag);
+      console.log(three);
+    }
+
+    if (button === fourbtn) {
+      pTag.textContent += "4";
       displayScreen.appendChild(pTag);
     }
 
-    if ((button = twobtn)) {
-      pTag.textContent += "2";
+    if (button === fivebtn) {
+      pTag.textContent += "5";
       displayScreen.appendChild(pTag);
-      console.log(displayScreen);
+    }
+
+    if (button === sixbtn) {
+      pTag.textContent += "6";
+      displayScreen.appendChild(pTag);
+    }
+
+    if (button === sevenbtn) {
+      pTag.textContent += "7";
+      displayScreen.appendChild(pTag);
+    }
+
+    if (button === eightbtn) {
+      pTag.textContent += "8";
+      displayScreen.appendChild(pTag);
+    }
+
+    if (button === ninebtn) {
+      pTag.textContent += "9";
+      displayScreen.appendChild(pTag);
+    }
+
+    if (button === zerobtn) {
+      pTag.textContent += "0";
+      displayScreen.appendChild(pTag);
     }
   });
 });
