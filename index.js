@@ -1,50 +1,48 @@
 //variables and operator for storing numbers
-const op1 = "";
-const op2 = "";
+let currentvalue;
 const opperators = ["add", "subtract", "multiply", "divide"];
+
 //calculation operation functions
 const add = (a, b) => {
   return a + b;
 };
-add(op1, op2);
 
 const subtract = (a, b) => {
   return a - b;
 };
-subtract(op1, op2);
 
 const multiply = (a, b) => {
   return a * b;
 };
-multiply(op1, op2);
 
 const divide = (a, b) => {
   return a / b;
 };
-divide(op1, op2);
 
-//function to execute calculations
-let operate = (a, b, operand) => {
-  return operand(a, b);
-};
+//function to display current value on screen
+function displayCurrentValue() {
+  let numDisplay = document.querySelector(".calc-numbers");
+  let allBtns = document.querySelectorAll("button");
 
-let displayScreen = document.querySelector(".calc-display");
-let numDisplay = document.querySelector(".calc-numbers");
-let allBtns = document.querySelectorAll("button");
-
-allBtns.forEach(function (button) {
-  button.addEventListener("click", (e) => {
-    updateDisplay(e.target.textContent);
+  allBtns.forEach(function (button) {
+    button.addEventListener("click", (e) => {
+      numDisplay.textContent += e.target.textContent;
+      let currentValue = numDisplay.innerText;
+      console.log(currentValue);
+    });
   });
-});
+}
+
+// function to calculate numbers
 
 // function clearScreen() {
-//   numDisplay.value  = "";
-// }
 
-function updateDisplay(number) {
-  if (numDisplay.textContent.length <= 10) {
-    numDisplay.textContent += number;
-  } else {
-  }
-}
+// Function for initializing the calculator
+const initialize = () => {
+  displayCurrentValue();
+};
+
+document.addEventListener("DOMContentLoaded", initialize);
+
+//Make sure can only type in numbers and not symbols
+//Make sure period can only be typed in once.
