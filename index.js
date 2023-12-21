@@ -92,8 +92,9 @@ const calculateNumbers = () => {
 
     console.log(result);
     numDisplay.textContent = result;
-    previousValue = result;
     currentValue = "";
+    currentValue = result;
+    previousValue = "";
     selectedOperator = null;
   });
 };
@@ -121,8 +122,8 @@ const initialize = () => {
 
 document.addEventListener("DOMContentLoaded", initialize);
 
-//add sass to code
 //add jquery to code
 //Make sure can only type in numbers and not symbols
 //Make sure period can only be typed in once.
-//Add parameter for only being able to type in 10 numbers on the screen so no overflow happens
+//add keyboard functionality to code
+//add function to percentage button
