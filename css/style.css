@@ -17,6 +17,10 @@ h1 {
   background-color: rgb(118, 118, 118);
 }
 
+#top-func:hover {
+  background-color: rgb(194, 194, 194);
+}
+
 .calc-body {
   width: 250px;
   height: 370px;

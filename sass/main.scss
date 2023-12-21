@@ -27,6 +27,10 @@ h1 {
   background-color: $color-topfuncbtns;
 }
 
+#top-func:hover {
+  background-color: $color-numbtnhv;
+}
+
 .calc-body {
   width: 250px;
   height: 370px;
