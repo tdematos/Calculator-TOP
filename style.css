@@ -91,14 +91,11 @@ button {
   border: solid rgb(92, 91, 91) 0.4px;
 }
 
-.calc-numbers > * {
-  font-size: 3rem;
+.calc-numbers {
+  font-size: 2.5rem;
   position: relative;
-  bottom: 50px;
+  bottom: 40px;
   right: 10px;
-}
-
-p {
   color: white;
 }
 
