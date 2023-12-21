@@ -68,6 +68,12 @@ const calculateNumbers = () => {
     const num1 = parseFloat(previousValue);
     const num2 = parseFloat(currentValue);
 
+    if (isNaN(num1) || isNaN(num2) || selectedOperator === null) {
+      // Handle invalid input or operator not selected
+      numDisplay.textContent = "Abort!";
+      return;
+    }
+
     console.log(e.target.textContent);
     switch (selectedOperator) {
       case "+":
