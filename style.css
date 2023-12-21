@@ -25,9 +25,6 @@ h1 {
 
 .calculator-num-body {
   display: flex;
-}
-
-.calculator-num-body {
   margin-left: 40px;
 }
 

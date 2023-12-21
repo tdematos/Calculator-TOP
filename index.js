@@ -1,5 +1,8 @@
 //variables and operator for storing numbers
-let currentvalue;
+let currentValue = "";
+let previousValue = "";
+let selectedOperator = null;
+let result;
 
 //calculation operation functions
 const add = (a, b) => {
@@ -27,9 +30,8 @@ const displayCurrentValue = () => {
   numBtns.forEach(function (button) {
     button.addEventListener("click", (e) => {
       numDisplay.textContent += e.target.textContent;
-      let currentValue = numDisplay.innerText;
+      currentValue = numDisplay.innerText;
       console.log(currentValue);
-      return currentValue;
     });
   });
 };
@@ -41,9 +43,13 @@ const selectOperation = () => {
 
   funcBtns.forEach((Btn) => {
     Btn.addEventListener("click", (e) => {
-      let operator = e.target.textContent;
-      console.log(operator);
-      return operator;
+      if (currentValue !== "") {
+        previousValue = currentValue;
+        currentValue = "";
+        selectedOperator = e.target.textContent;
+        console.log(selectedOperator);
+        document.querySelector(".calc-numbers").textContent = "";
+      }
     });
   });
 };
@@ -51,20 +57,44 @@ const selectOperation = () => {
 // function to calculate numbers
 const calculateNumbers = () => {
   const numDisplay = document.querySelector(".calc-numbers");
-  displayCurrentValue();
-  selectOperation();
+  const equalsButton = document.querySelector(".func-equals");
+  console.log(equalsButton);
 
-  if (selectOperation() === "+") {
-    let valueA = displayCurrentValue();
-    numDisplay.textContent = "";
-  }
+  equalsButton.addEventListener("click", (e) => {
+    const num1 = parseFloat(previousValue);
+    const num2 = parseFloat(currentValue);
+
+    console.log(e.target.textContent);
+    switch (selectedOperator) {
+      case "+":
+        result = add(num1, num2);
+        break;
+      case "-":
+        result = subtract(num1, num2);
+        break;
+      case "*":
+        result = multiply(num1, num2);
+        break;
+      case "/":
+        result = divide(num1, num2);
+        break;
+      default:
+        return;
+    }
+    console.log(result);
+    numDisplay.textContent = result;
+    // previousValue = result;
+    // currentValue = "";
+    // selectedOperator = null;
+  });
 };
 
 // function clearScreen() {
 
 // Function for initializing the calculator
 const initialize = () => {
-  // selectOperation();
+  displayCurrentValue();
+  selectOperation();
   calculateNumbers();
 };
 
