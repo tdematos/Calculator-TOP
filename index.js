@@ -29,9 +29,13 @@ const displayCurrentValue = () => {
 
   numBtns.forEach(function (button) {
     button.addEventListener("click", (e) => {
-      numDisplay.textContent += e.target.textContent;
-      currentValue = numDisplay.innerText;
-      console.log(currentValue);
+      if (numDisplay.textContent.length <= 10) {
+        numDisplay.textContent += e.target.textContent;
+        currentValue = numDisplay.innerText;
+        console.log(currentValue);
+      } else {
+        return;
+      }
     });
   });
 };
@@ -75,7 +79,11 @@ const calculateNumbers = () => {
       case "*":
         result = multiply(num1, num2);
         break;
-      case "/":
+      case "÷":
+        if (num2 === 0) {
+          numDisplay.textContent = "Error: Division by zero";
+          return;
+        }
         result = divide(num1, num2);
         break;
       default:
