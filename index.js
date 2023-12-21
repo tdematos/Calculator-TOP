@@ -81,21 +81,34 @@ const calculateNumbers = () => {
       default:
         return;
     }
+
     console.log(result);
     numDisplay.textContent = result;
-    // previousValue = result;
-    // currentValue = "";
-    // selectedOperator = null;
+    previousValue = result;
+    currentValue = "";
+    selectedOperator = null;
   });
 };
 
-// function clearScreen() {
+// function for clearing the screen
+const clearScreen = () => {
+  const numDisplay = document.querySelector(".calc-numbers");
+  const clearButton = document.querySelector(".clear");
+
+  clearButton.addEventListener("click", () => {
+    numDisplay.textContent = "";
+    currentValue = "";
+    previousValue = "";
+    selectedOperator = null;
+  });
+};
 
 // Function for initializing the calculator
 const initialize = () => {
   displayCurrentValue();
   selectOperation();
   calculateNumbers();
+  clearScreen();
 };
 
 document.addEventListener("DOMContentLoaded", initialize);
