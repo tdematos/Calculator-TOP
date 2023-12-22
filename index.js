@@ -3,6 +3,7 @@ let currentValue = "";
 let previousValue = "";
 let selectedOperator = null;
 let result;
+let decimalAdded = false;
 
 //calculation operation functions
 const add = (a, b) => {
@@ -26,7 +27,6 @@ const displayCurrentValue = () => {
   const numDisplay = document.querySelector(".calc-numbers");
   const numberButtons = document.querySelectorAll(".num-btn");
   const numBtns = Array.from(numberButtons);
-  let decimalAdded = false; // Flag to track if the decimal point is already added
 
   numBtns.forEach(function (button) {
     button.addEventListener("click", (e) => {
@@ -59,6 +59,7 @@ const selectOperation = () => {
       if (currentValue !== "") {
         previousValue = currentValue;
         currentValue = "";
+        decimalAdded = false;
         selectedOperator = e.target.textContent;
         console.log(selectedOperator);
         document.querySelector(".calc-numbers").textContent = "";
@@ -110,6 +111,7 @@ const calculateNumbers = () => {
     currentValue = result;
     previousValue = "";
     selectedOperator = null;
+    decimalAdded = false;
   });
 };
 
