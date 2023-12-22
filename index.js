@@ -26,10 +26,19 @@ const displayCurrentValue = () => {
   const numDisplay = document.querySelector(".calc-numbers");
   const numberButtons = document.querySelectorAll(".num-btn");
   const numBtns = Array.from(numberButtons);
+  let decimalAdded = false; // Flag to track if the decimal point is already added
 
   numBtns.forEach(function (button) {
     button.addEventListener("click", (e) => {
       if (numDisplay.textContent.length <= 10) {
+        if (e.target.textContent === "." && decimalAdded) {
+          return; // Prevent adding multiple decimal points
+        }
+
+        if (e.target.textContent === ".") {
+          decimalAdded = true; // Set flag to true after adding the decimal point
+        }
+
         numDisplay.textContent += e.target.textContent;
         currentValue = numDisplay.innerText;
         console.log(currentValue);
@@ -69,7 +78,6 @@ const calculateNumbers = () => {
     const num2 = parseFloat(currentValue);
 
     if (isNaN(num1) || isNaN(num2) || selectedOperator === null) {
-      // Handle invalid input or operator not selected
       numDisplay.textContent = "Abort!";
       return;
     }
@@ -115,6 +123,7 @@ const clearScreen = () => {
     currentValue = "";
     previousValue = "";
     selectedOperator = null;
+    result = "";
   });
 };
 
