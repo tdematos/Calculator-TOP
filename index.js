@@ -41,7 +41,6 @@ const displayCurrentValue = () => {
 
         numDisplay.textContent += e.target.textContent;
         currentValue = numDisplay.innerText;
-        console.log(currentValue);
       } else {
         return;
       }
@@ -61,7 +60,6 @@ const selectOperation = () => {
         currentValue = "";
         decimalAdded = false;
         selectedOperator = e.target.textContent;
-        console.log(selectedOperator);
         document.querySelector(".calc-numbers").textContent = "";
       }
     });
@@ -72,7 +70,6 @@ const selectOperation = () => {
 const calculateNumbers = () => {
   const numDisplay = document.querySelector(".calc-numbers");
   const equalsButton = document.querySelector(".func-equals");
-  console.log(equalsButton);
 
   equalsButton.addEventListener("click", (e) => {
     const num1 = parseFloat(previousValue);
@@ -83,7 +80,6 @@ const calculateNumbers = () => {
       return;
     }
 
-    console.log(e.target.textContent);
     switch (selectedOperator) {
       case "+":
         result = add(num1, num2);
@@ -105,7 +101,6 @@ const calculateNumbers = () => {
         return;
     }
 
-    console.log(result);
     numDisplay.textContent = parseFloat(result.toFixed(8));
     currentValue = "";
     currentValue = parseFloat(result.toFixed(8));
@@ -141,8 +136,83 @@ const convertToPercentage = () => {
   });
 };
 
-//function for adding keyboard input to calculator
-const handleKeyboardInput = () => {};
+// Function to handle keyboard input
+const handleKeyboardInput = () => {
+  document.addEventListener("keydown", (event) => {
+    const key = event.key;
+
+    const numDisplay = document.querySelector(".calc-numbers");
+
+    if (!isNaN(key) || key === ".") {
+      if (numDisplay.textContent.length <= 10) {
+        if (key === "." && decimalAdded) {
+          return;
+        }
+
+        if (key === ".") {
+          decimalAdded = true;
+        }
+
+        numDisplay.textContent += key;
+        currentValue = numDisplay.innerText;
+        console.log(currentValue);
+      }
+    } else if (key === "+" || key === "-" || key === "*" || key === "/") {
+      if (currentValue !== "") {
+        previousValue = currentValue;
+        currentValue = "";
+        decimalAdded = false;
+        selectedOperator = key;
+        console.log(selectedOperator);
+        numDisplay.textContent = "";
+      }
+    } else if (key === "Enter" || key === "=") {
+      event.preventDefault();
+
+      const num1 = parseFloat(previousValue);
+      const num2 = parseFloat(currentValue);
+
+      if (isNaN(num1) || isNaN(num2) || selectedOperator === null) {
+        numDisplay.textContent = "Abort!";
+        return;
+      }
+
+      switch (selectedOperator) {
+        case "+":
+          result = add(num1, num2);
+          break;
+        case "-":
+          result = subtract(num1, num2);
+          break;
+        case "*":
+          result = multiply(num1, num2);
+          break;
+        case "/":
+          if (num2 === 0) {
+            numDisplay.textContent = "Error: Division by zero";
+            return;
+          }
+          result = divide(num1, num2);
+          break;
+        default:
+          return;
+      }
+
+      numDisplay.textContent = result;
+      currentValue = "";
+      currentValue = result;
+      previousValue = "";
+      selectedOperator = null;
+      decimalAdded = false;
+    } else if (key === "C" || key === "Delete") {
+      numDisplay.textContent = "";
+      currentValue = "";
+      previousValue = "";
+      selectedOperator = null;
+      result = "";
+    }
+  });
+};
 
 // Function for initializing the calculator
 const initialize = () => {
@@ -151,9 +221,9 @@ const initialize = () => {
   convertToPercentage();
   calculateNumbers();
   clearScreen();
+  handleKeyboardInput();
 };
 
 document.addEventListener("DOMContentLoaded", initialize);
 
 //add jquery to code
-//add keyboard functionality to code
