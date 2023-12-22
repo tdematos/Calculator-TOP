@@ -106,9 +106,9 @@ const calculateNumbers = () => {
     }
 
     console.log(result);
-    numDisplay.textContent = result;
+    numDisplay.textContent = parseFloat(result.toFixed(8));
     currentValue = "";
-    currentValue = result;
+    currentValue = parseFloat(result.toFixed(8));
     previousValue = "";
     selectedOperator = null;
     decimalAdded = false;
@@ -129,10 +129,26 @@ const clearScreen = () => {
   });
 };
 
+//adding function for converting numbers into percentages
+const convertToPercentage = () => {
+  const numDisplay = document.querySelector(".calc-numbers");
+  const percentBtn = document.querySelector(".Percent");
+
+  percentBtn.addEventListener("click", () => {
+    let targetNumber = numDisplay.innerText;
+    let percentValue = targetNumber / 100;
+    numDisplay.textContent = percentValue;
+  });
+};
+
+//function for adding keyboard input to calculator
+const handleKeyboardInput = () => {};
+
 // Function for initializing the calculator
 const initialize = () => {
   displayCurrentValue();
   selectOperation();
+  convertToPercentage();
   calculateNumbers();
   clearScreen();
 };
@@ -140,7 +156,4 @@ const initialize = () => {
 document.addEventListener("DOMContentLoaded", initialize);
 
 //add jquery to code
-//Make sure can only type in numbers and not symbols
-//Make sure period can only be typed in once.
 //add keyboard functionality to code
-//add function to percentage button
