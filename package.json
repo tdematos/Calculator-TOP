@@ -12,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "sass": "^1.69.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.2"
   }
 }
