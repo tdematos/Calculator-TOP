@@ -12,7 +12,7 @@ I did not want to get too fancy, and go crazy with the style sheet, so I took in
 
 ## How
 
-### ==1.0==
+### V1.0
 
 I started this as one of my first projects when going through _"The Odin Project"_.
 
@@ -35,7 +35,7 @@ I also made sure to use various `console.log()` statements to help me debug alon
 
 I finally finished and launches my app with `Github Pages`.
 
-### ==V2.0==
+### V2.0
 
 These past couple of weeks I began learning `TypeScript` so I started to put what I learned into practice, and decided to refacor all of my code from vanilla `JavaScript` to `TypeScript`.
 
