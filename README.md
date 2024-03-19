@@ -54,5 +54,5 @@ I also made sure to use `Netlify` to launch my application, which I found easier
 Navigate to your desired directory:
 `cd <./directory>`
 
-Create a local repistory folder using the SSH key:
-` git push git@github.com:tdematos/Calculator-TOP.git`
+Clone repistory to a local folder using the SSH key:
+` git clone git@github.com:tdematos/Calculator-TOP.git`
