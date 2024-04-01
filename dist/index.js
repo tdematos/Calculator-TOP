@@ -212,4 +212,3 @@ const initialize = () => {
   handleKeyboardInput();
 };
 document.addEventListener("DOMContentLoaded", initialize);
-//add jquery to code
