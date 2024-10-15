@@ -206,11 +206,10 @@ const saveCalculation = () => {
             const targetElement = event.target;
             const secondRow = table === null || table === void 0 ? void 0 : table.rows[1];
             if (secondRow && secondRow.cells[0].innerText === "...") {
-                secondRow.remove();
-                const newRow = document.createElement("tr");
-                const newCell = document.createElement("td");
-                newRow.appendChild(newCell);
-                table === null || table === void 0 ? void 0 : table.appendChild(newRow);
+                // secondRow.remove();
+                const firstRow = document.querySelector(".starting-row");
+                if (firstRow)
+                    firstRow.innerText = "";
             }
             if (!calculationArr[currentArrIndex]) {
                 calculationArr[currentArrIndex] = ""; // Initialize if undefined

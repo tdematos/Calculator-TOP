@@ -235,12 +235,12 @@ const saveCalculation = () => {
       const secondRow = table?.rows[1];
 
       if (secondRow && secondRow.cells[0].innerText === "...") {
-        secondRow.remove();
+        // secondRow.remove();
 
-        const newRow: HTMLTableRowElement = document.createElement("tr");
-        const newCell: HTMLTableCellElement = document.createElement("td");
-        newRow.appendChild(newCell);
-        table?.appendChild(newRow);
+        const firstRow: HTMLTableElement | null =
+          document.querySelector(".starting-row");
+
+        if (firstRow) firstRow.innerText = "";
       }
       if (!calculationArr[currentArrIndex]) {
         calculationArr[currentArrIndex] = ""; // Initialize if undefined
