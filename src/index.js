@@ -5,8 +5,6 @@ let previousValue = "";
 let selectedOperator = null;
 let result = null;
 let decimalAdded = false;
-const calculationArr = [];
-let currentArrIndex = 0;
 //calculation operation functions
 const add = (a, b) => {
     return a + b;
@@ -197,41 +195,22 @@ const handleKeyboardInput = () => {
     });
 };
 //Code for adding calculation to table
+//when pressing equals button number in display gets saved to variable
+//A new row in table is created
+//variable gets attached to element in new row as string
 const saveCalculation = () => {
-    const allButtons = document.querySelectorAll(".button");
-    const table = document.querySelector("table");
+    const equalsButton = document.querySelector(".func-equals");
     const numDisplay = document.querySelector(".calc-numbers");
-    allButtons.forEach((button) => {
-        button === null || button === void 0 ? void 0 : button.addEventListener("click", (event) => {
-            const targetElement = event.target;
-            const secondRow = table === null || table === void 0 ? void 0 : table.rows[1];
-            if (secondRow && secondRow.cells[0].innerText === "...") {
-                secondRow.remove();
-                const newRow = document.createElement("tr");
-                const newCell = document.createElement("td");
-                newRow.appendChild(newCell);
-                table === null || table === void 0 ? void 0 : table.appendChild(newRow);
-            }
-            if (!calculationArr[currentArrIndex]) {
-                calculationArr[currentArrIndex] = ""; // Initialize if undefined
-            }
-            calculationArr[currentArrIndex] += targetElement.innerText || "";
-            if (targetElement.innerText === "=") {
-                calculationArr[currentArrIndex] += numDisplay === null || numDisplay === void 0 ? void 0 : numDisplay.textContent;
-                const lastRow = table === null || table === void 0 ? void 0 : table.rows[table.rows.length - 1];
-                if (lastRow) {
-                    const lastCell = lastRow.cells[0];
-                    lastCell.innerText += calculationArr[currentArrIndex] || "";
-                }
-                const newRow = document.createElement("tr");
-                const newCell = document.createElement("td");
-                newRow.appendChild(newCell);
-                table === null || table === void 0 ? void 0 : table.appendChild(newRow);
-                currentArrIndex++;
-            }
-            console.log(calculationArr);
-        });
-    });
+    const capturedNum = numDisplay === null || numDisplay === void 0 ? void 0 : numDisplay.innerText;
+    const table = document.querySelector("table");
+    const newRow = document.createElement("tr");
+    const newCell = document.createElement("td");
+    // equalsButton?.addEventListener("click", () => {
+    //   newCell?.innerHTML = capturedNum;
+    //   newRow?.appendChild(newCell);
+    //   table?.appendChild(newRow);
+    // });
+    console.log(equalsButton);
 };
 // Function for initializing the calculator
 const initialize = () => {

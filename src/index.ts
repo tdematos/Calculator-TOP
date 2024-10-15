@@ -4,6 +4,8 @@ let previousValue: number | string = "";
 let selectedOperator: string | null = null;
 let result: number | string | null = null;
 let decimalAdded: boolean = false;
+const calculationArr: string[] = [];
+let currentArrIndex: number = 0;
 
 //calculation operation functions
 const add = (a: number, b: number) => {
@@ -220,12 +222,59 @@ const handleKeyboardInput = () => {
   });
 };
 
+//Code for adding calculation to table
+const saveCalculation = () => {
+  const allButtons: NodeList | null = document.querySelectorAll(".button");
+  const table: HTMLTableElement | null = document.querySelector("table");
+  const numDisplay: HTMLElement | null =
+    document.querySelector(".calc-numbers");
+
+  allButtons.forEach((button) => {
+    button?.addEventListener("click", (event) => {
+      const targetElement = event.target as HTMLElement;
+      const secondRow = table?.rows[1];
+
+      if (secondRow && secondRow.cells[0].innerText === "...") {
+        secondRow.remove();
+
+        const newRow: HTMLTableRowElement = document.createElement("tr");
+        const newCell: HTMLTableCellElement = document.createElement("td");
+        newRow.appendChild(newCell);
+        table?.appendChild(newRow);
+      }
+      if (!calculationArr[currentArrIndex]) {
+        calculationArr[currentArrIndex] = ""; // Initialize if undefined
+      }
+      calculationArr[currentArrIndex] += targetElement.innerText || "";
+
+      if (targetElement.innerText === "=") {
+        calculationArr[currentArrIndex] += numDisplay?.textContent;
+
+        const lastRow = table?.rows[table.rows.length - 1];
+        if (lastRow) {
+          const lastCell = lastRow.cells[0];
+          lastCell.innerText += calculationArr[currentArrIndex] || "";
+        }
+
+        const newRow: HTMLTableRowElement = document.createElement("tr");
+        const newCell: HTMLTableCellElement = document.createElement("td");
+        newRow.appendChild(newCell);
+        table?.appendChild(newRow);
+
+        currentArrIndex++;
+      }
+      console.log(calculationArr);
+    });
+  });
+};
+
 // Function for initializing the calculator
 const initialize = () => {
   displayCurrentValue();
   selectOperation();
   convertToPercentage();
   calculateNumbers();
+  saveCalculation();
   clearScreen();
   handleKeyboardInput();
 };
