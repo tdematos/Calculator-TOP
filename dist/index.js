@@ -214,10 +214,10 @@ const saveCalculation = () => {
                 calculationArr[currentArrIndex] = "";
             }
             calculationArr[currentArrIndex] += targetElement.innerText || "";
-            // if (targetElement.innerText === "AC") {
-            //   calculationArr[currentArrIndex] = "";
-            //   return;
-            // }
+            if (targetElement.innerText === "AC") {
+                calculationArr[currentArrIndex] = "";
+                return;
+            }
             if (targetElement.innerText === "=") {
                 calculationArr[currentArrIndex] += (numDisplay === null || numDisplay === void 0 ? void 0 : numDisplay.textContent) || "";
                 const lastRow = table === null || table === void 0 ? void 0 : table.rows[table.rows.length - 1];

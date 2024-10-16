@@ -246,11 +246,11 @@ const saveCalculation = () => {
 
       calculationArr[currentArrIndex] += targetElement.innerText || "";
 
-      // if (targetElement.innerText === "AC") {
-      //   calculationArr[currentArrIndex] = "";
+      if (targetElement.innerText === "AC") {
+        calculationArr[currentArrIndex] = "";
 
-      //   return;
-      // }
+        return;
+      }
 
       if (targetElement.innerText === "=") {
         calculationArr[currentArrIndex] += numDisplay?.textContent || "";
