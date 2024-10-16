@@ -206,27 +206,31 @@ const saveCalculation = () => {
             const targetElement = event.target;
             const secondRow = table === null || table === void 0 ? void 0 : table.rows[1];
             if (secondRow && secondRow.cells[0].innerText === "...") {
-                // secondRow.remove();
                 const firstRow = document.querySelector(".starting-row");
                 if (firstRow)
                     firstRow.innerText = "";
             }
             if (!calculationArr[currentArrIndex]) {
-                calculationArr[currentArrIndex] = ""; // Initialize if undefined
+                calculationArr[currentArrIndex] = "";
             }
             calculationArr[currentArrIndex] += targetElement.innerText || "";
+            // if (targetElement.innerText === "AC") {
+            //   calculationArr[currentArrIndex] = "";
+            //   return;
+            // }
             if (targetElement.innerText === "=") {
-                calculationArr[currentArrIndex] += numDisplay === null || numDisplay === void 0 ? void 0 : numDisplay.textContent;
+                calculationArr[currentArrIndex] += (numDisplay === null || numDisplay === void 0 ? void 0 : numDisplay.textContent) || "";
                 const lastRow = table === null || table === void 0 ? void 0 : table.rows[table.rows.length - 1];
                 if (lastRow) {
                     const lastCell = lastRow.cells[0];
                     lastCell.innerText += calculationArr[currentArrIndex] || "";
                 }
+                currentArrIndex++;
+                calculationArr[currentArrIndex] = (numDisplay === null || numDisplay === void 0 ? void 0 : numDisplay.textContent) || "";
                 const newRow = document.createElement("tr");
                 const newCell = document.createElement("td");
                 newRow.appendChild(newCell);
                 table === null || table === void 0 ? void 0 : table.appendChild(newRow);
-                currentArrIndex++;
             }
             console.log(calculationArr);
         });

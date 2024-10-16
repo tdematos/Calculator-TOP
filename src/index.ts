@@ -235,20 +235,25 @@ const saveCalculation = () => {
       const secondRow = table?.rows[1];
 
       if (secondRow && secondRow.cells[0].innerText === "...") {
-        // secondRow.remove();
-
         const firstRow: HTMLTableElement | null =
           document.querySelector(".starting-row");
-
         if (firstRow) firstRow.innerText = "";
       }
+
       if (!calculationArr[currentArrIndex]) {
-        calculationArr[currentArrIndex] = ""; // Initialize if undefined
+        calculationArr[currentArrIndex] = "";
       }
+
       calculationArr[currentArrIndex] += targetElement.innerText || "";
 
+      // if (targetElement.innerText === "AC") {
+      //   calculationArr[currentArrIndex] = "";
+
+      //   return;
+      // }
+
       if (targetElement.innerText === "=") {
-        calculationArr[currentArrIndex] += numDisplay?.textContent;
+        calculationArr[currentArrIndex] += numDisplay?.textContent || "";
 
         const lastRow = table?.rows[table.rows.length - 1];
         if (lastRow) {
@@ -256,13 +261,16 @@ const saveCalculation = () => {
           lastCell.innerText += calculationArr[currentArrIndex] || "";
         }
 
+        currentArrIndex++;
+
+        calculationArr[currentArrIndex] = numDisplay?.textContent || "";
+
         const newRow: HTMLTableRowElement = document.createElement("tr");
         const newCell: HTMLTableCellElement = document.createElement("td");
         newRow.appendChild(newCell);
         table?.appendChild(newRow);
-
-        currentArrIndex++;
       }
+
       console.log(calculationArr);
     });
   });
