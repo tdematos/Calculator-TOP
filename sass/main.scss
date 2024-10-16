@@ -168,20 +168,55 @@ table {
 }
 
 th {
-  padding: 10px 40px 10px 40px;
+  padding: 10px 60px 10px 60px;
+}
+
+.btn-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 5rem;
+  margin-top: 20px;
 }
 
 .clear-btn {
-  width: 100px;
+  width: 80px;
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Audiowide", sans-serif;
+  background-color: red;
+  border: none;
+}
+
+.clear-btn:hover {
+  background-color: rgb(254, 133, 133);
+}
+
+.save-btn {
+  width: 80px;
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Audiowide", sans-serif;
+  background-color: greenyellow;
+  border: none;
+  margin-right: 10px;
+}
+
+.save-btn:hover {
+  background-color: rgb(214, 255, 152);
+}
+
+.load-btn {
+  width: 80px;
   color: white;
   font-size: 1.5rem;
   font-family: "Audiowide", sans-serif;
   background-color: $color-funcbtns;
   border: none;
-  margin-left: 5rem;
-  margin-top: 20px;
+  margin-right: 10px;
 }
 
-.clear-btn:hover {
-  background-color: $color-funcbtnshv;
+.load-btn:hover {
+  background-color: rgb(255, 229, 181);
 }
