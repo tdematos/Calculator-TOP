@@ -5,7 +5,7 @@ let previousValue = "";
 let selectedOperator = null;
 let result = null;
 let decimalAdded = false;
-const calculationArr = [];
+let calculationArr = [];
 let currentArrIndex = 0;
 //calculation operation functions
 const add = (a, b) => {
@@ -31,10 +31,10 @@ const displayCurrentValue = () => {
             if (numDisplay.textContent.length <= 10) {
                 const target = e.target;
                 if (target.textContent === "." && decimalAdded) {
-                    return; // Prevent adding multiple decimal points
+                    return;
                 }
                 if (target.textContent === ".") {
-                    decimalAdded = true; // Set flag to true after adding the decimal point
+                    decimalAdded = true;
                 }
                 numDisplay.textContent += (_a = target === null || target === void 0 ? void 0 : target.textContent) !== null && _a !== void 0 ? _a : "";
                 currentValue = numDisplay.innerText;
@@ -236,6 +236,50 @@ const saveCalculation = () => {
         });
     });
 };
+//add code for the save button to local storage below
+const saveToLocalStorage = () => {
+    const saveButton = document.querySelector(".save-btn");
+    saveButton === null || saveButton === void 0 ? void 0 : saveButton.addEventListener("click", () => {
+        localStorage.setItem("calcArrayKey", JSON.stringify(calculationArr));
+    });
+};
+//add code below for loading data from local storage
+const loadFromLocalStorage = () => {
+    const loadButton = document.querySelector(".load-btn");
+    const table = document.querySelector("table");
+    loadButton === null || loadButton === void 0 ? void 0 : loadButton.addEventListener("click", () => {
+        const storedData = localStorage.getItem("calcArrayKey");
+        if (storedData !== null) {
+            const parsedData = JSON.parse(storedData);
+            calculationArr = [...parsedData];
+            console.log(calculationArr);
+            const secondRow = table === null || table === void 0 ? void 0 : table.rows[1];
+            if (secondRow && secondRow.cells[0].innerText === "...") {
+                const firstRow = document.querySelector(".starting-row");
+                if (firstRow)
+                    firstRow.innerText = "";
+            }
+            for (let i = 0; i < calculationArr.length; i++) {
+                const newRow = document.createElement("tr");
+                const newCell = document.createElement("td");
+                newCell.innerText = calculationArr[i];
+                newRow.appendChild(newCell);
+                table === null || table === void 0 ? void 0 : table.appendChild(newRow);
+            }
+            currentArrIndex = calculationArr.length - 1;
+        }
+        else {
+            console.log("No data found in localStorage.");
+        }
+    });
+};
+//add code for clearing data from local storage and table below
+const clearLocalStorage = () => {
+    const clearButton = document.querySelector(".clear-btn");
+    clearButton === null || clearButton === void 0 ? void 0 : clearButton.addEventListener("click", () => {
+        localStorage.clear();
+    });
+};
 // Function for initializing the calculator
 const initialize = () => {
     displayCurrentValue();
@@ -245,5 +289,8 @@ const initialize = () => {
     saveCalculation();
     clearScreen();
     handleKeyboardInput();
+    saveToLocalStorage();
+    loadFromLocalStorage();
+    clearLocalStorage();
 };
 document.addEventListener("DOMContentLoaded", initialize);
