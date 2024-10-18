@@ -276,8 +276,22 @@ const loadFromLocalStorage = () => {
 //add code for clearing data from local storage and table below
 const clearLocalStorage = () => {
     const clearButton = document.querySelector(".clear-btn");
+    const table = document.querySelector("table");
+    const newRow = document.createElement("tr");
+    const newCell = document.createElement("td");
     clearButton === null || clearButton === void 0 ? void 0 : clearButton.addEventListener("click", () => {
         localStorage.clear();
+        if (table) {
+            const rows = table.querySelectorAll("tr");
+            rows.forEach((row, index) => {
+                if (index > 0) {
+                    row.remove();
+                }
+            });
+        }
+        newCell.innerText = "...";
+        newRow.appendChild(newCell);
+        table === null || table === void 0 ? void 0 : table.appendChild(newRow);
     });
 };
 // Function for initializing the calculator

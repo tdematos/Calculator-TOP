@@ -329,9 +329,26 @@ const loadFromLocalStorage = () => {
 const clearLocalStorage = () => {
   const clearButton: HTMLTableElement | null =
     document.querySelector(".clear-btn");
+  const table: HTMLElement | null = document.querySelector("table");
+  const newRow: HTMLTableRowElement = document.createElement("tr");
+  const newCell: HTMLTableCellElement = document.createElement("td");
 
   clearButton?.addEventListener("click", () => {
     localStorage.clear();
+
+    if (table) {
+      const rows = table.querySelectorAll("tr");
+
+      rows.forEach((row, index) => {
+        if (index > 0) {
+          row.remove();
+        }
+      });
+    }
+
+    newCell.innerText = "...";
+    newRow.appendChild(newCell);
+    table?.appendChild(newRow);
   });
 };
 
