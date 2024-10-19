@@ -49,9 +49,11 @@ const displayCurrentValue = () => {
 const selectOperation = () => {
     const functionButtons = document.querySelectorAll(".func");
     const funcBtns = Array.from(functionButtons);
+    const numDisplay = document.querySelector(".calc-numbers");
     funcBtns.forEach((Btn) => {
         Btn.addEventListener("click", (e) => {
             if (currentValue !== "") {
+                currentValue = numDisplay.innerText;
                 previousValue = currentValue;
                 currentValue = "";
                 decimalAdded = false;
@@ -67,6 +69,7 @@ const calculateNumbers = () => {
     const numDisplay = document.querySelector(".calc-numbers");
     const equalsButton = document.querySelector(".func-equals");
     equalsButton.addEventListener("click", (e) => {
+        currentValue = numDisplay.innerText;
         const num1 = parseFloat(String(previousValue));
         const num2 = parseFloat(String(currentValue));
         if (isNaN(num1) || isNaN(num2) || selectedOperator === null) {
@@ -232,6 +235,7 @@ const saveCalculation = () => {
                 newRow.appendChild(newCell);
                 table === null || table === void 0 ? void 0 : table.appendChild(newRow);
             }
+            console.log(currentValue, previousValue);
             console.log(calculationArr);
         });
     });
