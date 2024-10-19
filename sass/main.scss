@@ -9,6 +9,7 @@ $color-numbtns: rgb(157, 156, 156);
 $color-numbtnhv: rgb(194, 194, 194);
 $color-pagebg: rgb(255, 255, 255);
 $color-topfuncbtns: rgb(118, 118, 118);
+$color-table-head: rgb(87, 87, 200);
 
 body {
   max-width: 100vw;
@@ -55,6 +56,18 @@ h1 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 80%;
+  height: 38%;
+  flex-wrap: wrap;
+}
+
+.table {
+  width: 50%;
+  min-width: 250px;
+}
+
+.calc-container {
+  width: 50%;
 }
 
 .calc-body {
@@ -160,7 +173,7 @@ td {
   font-family: "Audiowide", sans-serif;
   font-size: 20px;
   border-collapse: collapse;
-  border: 1px solid;
+  border: 1px solid lightgray;
 }
 
 table {
@@ -169,6 +182,8 @@ table {
 
 th {
   padding: 10px 60px 10px 60px;
+  color: white;
+  background-color: $color-table-head;
 }
 
 .btn-container {
@@ -212,11 +227,11 @@ th {
   color: white;
   font-size: 1.5rem;
   font-family: "Audiowide", sans-serif;
-  background-color: $color-funcbtns;
+  background-color: $color-table-head;
   border: none;
   margin-right: 10px;
 }
 
 .load-btn:hover {
-  background-color: rgb(255, 229, 181);
+  background-color: rgb(121, 121, 193);
 }
