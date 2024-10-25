@@ -2,15 +2,23 @@
 
 ## About
 
-This is a basic calculator app inspired by the calculator that comes installed on Macs.
+Calc+ is a calculator app that allows you to track each calculation you have done through saving your results to the table. Sometimes you just want to remember what your past calculations were, but if they are not visual, you typically forget. Calc+ solves that problem.
+
+## How to use
+
+You can simply use Calc+ as a normal calculator. Each time that you press the `=` button, your calculation will get saved in an individual row on the table and will be displayed for you to see. For each calculation that you make a new row will get added. Additinally there are 3 buttons. A `save`, `load`, and `delete` button are visible.
+
+If you want to keep your caluculations after you have left the website and do not want to make sure they are deleted, simply press the `save` button, and your information will get saved to the `local storage` on your browser.
+
+If you have left the website or existed out of the window, and you come back to the website and the table is empty, simply press the `load` button to load your data. This will pull that data that was saved to the `local storage` and will populate it on the table.
+
+If you want to get rid of all of the calculations both from the `local storage` and table, simply click the `delete` button and everything will be wiped. You will now have the ability for you to start your calculations from scratch.
 
 ## Why
 
 This is one of the first projects that I started working on when I learned `HTML` `CSS` and `JavaScript`.
 
 I did not want to get too fancy, and go crazy with the style sheet, so I took inperation from the basic calculator, and later knew that I could change both the vistual and functionality aspect later when I fully felt comfortable with the languages.
-
-## How
 
 ### V1.0
 
