@@ -2,7 +2,7 @@
 
 ## About
 
-Calc+ is a calculator app that allows you to track each calculation you have done through saving your results to the table. Sometimes you just want to remember what your past calculations were, but if they are not visual, you typically forget. Calc+ solves that problem.
+Calc+ is a calculator app that allows you to track each calculation you have done through saving your results to the table. Sometimes you just want to remember what your past calculations were, but if they are not visual, you typically forget. Calc+ solves that problem. On top of this it is created to be user-friendly both on desktop and mobile.
 
 ## How to use
 
@@ -19,6 +19,8 @@ If you want to get rid of all of the calculations both from the `local storage` 
 This is one of the first projects that I started working on when I learned `HTML` `CSS` and `JavaScript`.
 
 I did not want to get too fancy, and go crazy with the style sheet, so I took inperation from the basic calculator, and later knew that I could change both the vistual and functionality aspect later when I fully felt comfortable with the languages.
+
+I also undertook the Harvard CS50x course and I wanted to stretch the regular functionality of what a basic calculator could do, and add functionality that can add to the user's experience both visually and experience-wise.
 
 ### V1.0
 
@@ -56,6 +58,14 @@ There were also some problems I ran into that I solved by using `!` which in `Ty
 In then end I was able to compile all of my code into a `.js` file by typing `tsc` intot he **terminal**.
 
 I also made sure to use `Netlify` to launch my application, which I found easier to use then `Github Pages`.
+
+### V3.0
+
+Added header to the app page. Made sure that that the application can work on both mobile and desktop by utilizing `flex-box` and `flex-wrap`. Added a table to hold calculations through a combination of `html`, `sass` and `typescript`. I also added the functionality to add data from the calculations through the use of `local storage`.
+
+Bugs that were fixed:
+
+- Perecentage button not functioning in calculator was fixed.
 
 ## Instructions to run code
 
